@@ -5,7 +5,7 @@ services:
     build:
       context: ./server/site
     ports:
-     - "9400:9400"
+     - "6600:6600"
     depends_on:
      - database
      - redis
@@ -16,7 +16,7 @@ services:
       - "./server/site:/usr/src/app"
       - ./.data/uploads:/usr/src/app/files/uploads
     environment:
-      PORT: 9400
+      PORT: 6600
       ENABLE_REQUEST_LOG: 1
       DATABASE_URL: mysql://project:project@database/project
       REDIS_URL: redis://redis/1
@@ -26,10 +26,10 @@ services:
   redis:
     image: redis
     ports:
-      - "9479:6379"
+      - "6679:6379"
   database:
     ports:
-     - "9406:3306"
+     - "6606:3306"
     image: mysql:5.7
     volumes:
       - "./.data/db:/var/lib/mysql"
